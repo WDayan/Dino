@@ -1,15 +1,16 @@
+import javax.swing.*;
 class Variavel{
-	private int j, indice;
+	private int indice, j;
 	private String nome;
 	private double valor;
 	private boolean bv;
 	
-	public void setJ(int J){
+/*	public void setJ(int J){
 		this.j = J;
 	}
 	public int getJ(){
 		return this.j;
-	}
+	}*/
 	public void setIndice(int ind){
 		this.indice = ind;
 	}
@@ -25,39 +26,44 @@ class Variavel{
 	public void setNome(String s){
 		this.nome = s;
 	}
-	public char getNome(){
-		return this.nome;
-	}
-	public void setValor(double v){
-		this.valor = v;
-	}
-	public double getValor(){
-		return this.valor;
-	}
-	
-	public int ehInt(){
-		String s = new String();
+	//public char getNome(){
+		//return this.nome;
+	//}
+
+	public void ehInt(String s, int i){//Quando encontra i de INT precisa jogar nessa função.
+		String nova = new String();
+		String inteiro = new String("int ");
+		String aux = new String();
 		int correto = 1;
-		bv=correto == 1;
-		j = this.i;
-		if(this.v[j+2] == 't' && (this.v[j-1] == ' ' || this.v[j-1] == ';')){
-			j += 2;
-			while(bv){
-				j++;
-				if(this.v[j] == ' '){ //Se v[j] = ESPAÇO,
-					j = j;			  //Continua girando, até achar algo diferente.
+		char c;
+		if(inteiro.regionMatches(0, s, i, 4)){
+			i += 3;
+			while(correto < 2){
+				i++;
+				c = s.charAt(i);
+				if(c == ' ')
+					i = i;
+				else if(c == ';'){
+					System.out.println("If do ; i = "+i);
+					nova = aux;
+					correto = 3;
+					System.out.println("Nova = "+nova);
 				}
-				else if(this.v[j] == '='){ //Se for igual a "=" preciso fazer outro processo.
-					this.vars[indice].setNome(s); //Se chegou no "=" é porque já encontrou o nome da variavel.
-					correto = 0; //Programa chama comando da Classe ATRIBUIÇÃO.
+				else if(c == ','){
+				System.out.println("If do , i = "+i);
+					nova = aux;
 				}
-				else{//se não entrou em nenuhm IF, quer dizer que achou o nome da Variavel.
-					s.concat(this.v[j]);
+				else{
+					System.out.println("C = "+c);
+					aux += c;
+					System.out.println("Aux = "+aux);
 				}
-			}	
+			}
 		}
-		indice++;
-		return correto; //Se voltar 1 é porque deu tudo certo.
+		System.out.println("Resultado foi\n\n"+nova);
+		//return nova;
 	}
-  
-  }
+
+
+	
+}
