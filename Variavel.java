@@ -64,13 +64,11 @@ class Variavel{
 
 	public static int achaVariavel(Variavel v[], String s){ //Recebe todas as variaveis, e o NOME de uma variavel. Aí faz a busca e retorna o INDICE da variavel buscada!!!
 		int i;
-		for(i = 0; i< 6; i++){ //COLOQUEI 6 PARA TESTAR!! PRECISO ARRUMAR!!   <-------------
+		for(i = 0; v[i].nome != null; i++){ 
 			if(v[i].nome.equals(s)){
-				//System.out.println("i = "+i);
 				return i;		
 			}
 		}
-		//System.out.println("Chegou aqui");
 		return - 1;
 	}
 
