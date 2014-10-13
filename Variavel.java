@@ -1,27 +1,12 @@
-import javax.swing.*;
 class Variavel{
-	private int indice, j;
 	public String nome;
 	private double valor;
-	private boolean bv;
 	
-	/*public void setJ(int J){
-		this.j = J;
+	public void setValor(double v){
+		this.valor = v;
 	}
-	public int getJ(){
-		return this.j;
-	}*/
-	public void setIndice(int ind){
-		this.indice = ind;
-	}
-	public int getIndice(){
-		return this.indice;
-	}
-	public void setBv(boolean b){
-		this.bv = b;
-	}
-	public boolean getBv(){
-		return this.bv;
+	public double getValor(){
+		return this.valor;
 	}
 	public void setNome(String s){
 		this.nome = s;
@@ -29,62 +14,72 @@ class Variavel{
 	public String getNome(){
 		return this.nome.toString();
 	}
-	
+	//public Variavel getVariavel(){
+	//	return this.variavel;
+	//}
+	//public void setVariavel(Variavel j){
+	//	this.Variavel = j;
+	//}
 	public static boolean ehDouble(String s, int i){
 		String Double = new String("double ");
-		if(Double.regionMatches(0, s, i, 7))
+		if(Double.regionMatches(0, s, i, 7)) //Função teste se a string DOUBLE  é igual a região que eu defini da string S.
 			return true;
 		else
 			return false;
 	}
 	
-	public static int giraAteVirgula(String s, int i){//Método pode ser usado caso encontre uma atribuição no meio de declarações.
+	public static String novaVariavel(String s, int comeco, int ultimo){//Recebe  a String, o começo da variavel, e até a , ou o ;
+		String aux = new String();
+		while(comeco <= ultimo){
+			if(s.charAt(comeco) == ' ') //Para ignorar espacos.
+				comeco = comeco;
+			else
+				aux += s.charAt(comeco);//Se não for espaco, eh a minha variavel.
+			comeco++;	
+		}
+		return aux.toString();
+	
+	
+	}
+	
+	public static int achaNovaVariavel(String s, int comeco){ //Recebe a string e o começo da Criação, método serve para separa cada variavel, as virgulas, e ;'s ....
+		int ultimo = comeco;
+		boolean feito = true;//Só existe pra ficar girando no WHILE.
 		char c;
-		do{
-			i++;
-			c = s.charAt(i);		
-		}while(c != ',');
-		
-		return i;
-	}
-	
-
-	public static boolean ehInt(String s, int i){//Quando encontra i de INT essa função descobre se eh. Mas apenas no primeiro caso.
-		String inteiro = new String("int");
-		//String aux = new String();
-		if(inteiro.regionMatches(0, s, i, 3))
-			return true;
-		else
-			return false;
-		
+		while(feito){
+			c = s.charAt(ultimo);
+			if(c == ' '){
+				ultimo = ultimo; //Se encontrar espaco não faz nada.
+			}
+			else if(c == ','){ //Se for , já encontrou o que queria.
+				return ultimo - 1;
+			}
+			else if(c == ';'){ //Se for ; já encontrou o que queria.
+				return ultimo - 1;
+			}
+			ultimo++;		
+		}
+		return 0;
 	}
 
-		
+	public static int achaVariavel(Variavel v[], String s){ //Recebe todas as variaveis, e o NOME de uma variavel. Aí faz a busca e retorna o INDICE da variavel buscada!!!
+		int i;
+		for(i = 0; i< 6; i++){ //COLOQUEI 6 PARA TESTAR!! PRECISO ARRUMAR!!   <-------------
+			if(v[i].nome.equals(s)){
+				//System.out.println("i = "+i);
+				return i;		
+			}
+		}
+		//System.out.println("Chegou aqui");
+		return - 1;
+	}
+
+
+
+
+
 
 
 	
 }
-
-
-
-	/*Código que encontra o nome da Variavel depois do INT.
-	i += 3;
-	while(correto < 2){
-		i++;
-		c = s.charAt(i);
-		if(c == ' ')
-			i = i;
-		else if(c == ';'){
-			this.nome = aux;
-			correto = 3;
-		}
-		else if(c == ','){
-			this.nome = aux;
-			correto = 3;
-			this.virgula = true;
-		}
-		else{
-			aux += c;
-		}
-	}*/
 
