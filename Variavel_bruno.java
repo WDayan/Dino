@@ -1,18 +1,31 @@
 class Variavel{
  private int valor;
- private char nome[] = new char[10];
+ private String nome;
  
- public void SetVariavel (int a) // a= valor
+ public void setVariavel (int a) // a= valor
  {
     valor = a;
  }
- public int GetVariavel ()
+ public int getVariavel ()
  {
 	return valor;
  }
- public void Imprime ()
- {
-	System.out.println("valor"+valor);
+ public String getNome(){
+	return this.nome.to.String();
  }
+ public void setNome(String s){
+	this.nome = s;
+ }
+ public void imprime ()
+ {
+	System.out.println("valor"+this.valor);
+ }
+ 
+ }
+ 
+ public achaVariavel(Variavel[] v, String s){ //Recebe toda a classe de Variavel, e a String NOME que deseja encontrar.
+	v
+ 
+ 
  
  }

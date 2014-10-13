@@ -1,6 +1,6 @@
 class MainVariavel{ //Teste para a classe Variavel
 public static void main ( String args []){	
-	String s = new String("main(){  int a,b;int     abacaxi;        int cobra;double h,homem;");
+	String s = new String("main(){  int a,b;intabacaxi;        int cobra;double h,homem,teste;");
 	String aux = new String();
 	Variavel[] vars = new Variavel[500];
 	char c;

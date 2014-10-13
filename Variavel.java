@@ -50,9 +50,9 @@ class Variavel{
 	
 
 	public static boolean ehInt(String s, int i){//Quando encontra i de INT essa função descobre se eh. Mas apenas no primeiro caso.
-		String inteiro = new String("int ");
+		String inteiro = new String("int");
 		//String aux = new String();
-		if(inteiro.regionMatches(0, s, i, 4))
+		if(inteiro.regionMatches(0, s, i, 3))
 			return true;
 		else
 			return false;
