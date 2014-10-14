@@ -28,7 +28,7 @@ class Variavel{
 			return false;
 	}
 	
-	public static String novaVariavel(String s, int comeco, int ultimo){//Recebe  a String, o começo da variavel, e até a , ou o ;
+	public static String novaVariavel(String s, int comeco, int ultimo){
 		String aux = new String();
 		while(comeco <= ultimo){
 			if(s.charAt(comeco) == ' ') //Para ignorar espacos.
@@ -42,7 +42,7 @@ class Variavel{
 	
 	}
 	
-	public static int achaNovaVariavel(String s, int comeco){ //Recebe a string e o começo da Criação, método serve para separa cada variavel, as virgulas, e ;'s ....
+	public static int achaNovaVariavel(String s, int comeco){
 		int ultimo = comeco;
 		boolean feito = true;//Só existe pra ficar girando no WHILE.
 		char c;
@@ -62,9 +62,9 @@ class Variavel{
 		return 0;
 	}
 
-	public static int achaVariavel(Variavel v[], String s){ //Recebe todas as variaveis, e o NOME de uma variavel. Aí faz a busca e retorna o INDICE da variavel buscada!!!
+	public static int achaVariavel(Variavel v[], String s){
 		int i;
-		for(i = 0; v[i].nome != null; i++){ 
+		for(i = 0; v[i].nome != null; i++){ //COLOQUEI 6 PARA TESTAR!! PRECISO ARRUMAR!!
 			if(v[i].nome.equals(s)){
 				return i;		
 			}
