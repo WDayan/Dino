@@ -79,7 +79,7 @@ class Saida{
 		return i;
 	}
 
-	public boolean ehImprima(String s, int i){ //Função não está testada ainda.
+	public boolean ehImprima(String s, int i){ //Recebe no 'i'. Devolve TRUE caso: for imprima(); se não FALSE
 		String Imprima = new String("imprima");
 		if(Imprima.regionMatches(0, s, i, 7)){
 		if(s.charAt(i - 1) == ';' || s.charAt(i - 1) == ' ' || s.charAt(i - 1) == '}')
@@ -88,7 +88,7 @@ class Saida{
 		return false;
 	}
 	
-	public boolean ehImprimaNumero(String s, int i){
+	public boolean ehImprimaNumero(String s, int i){//Recebe no 'i'. Devolve TRUE caso: for imprimaNumero(); se não FALSE
 		String Imprima = new String("imprimaNumero");
 		if(Imprima.regionMatches(0, s, i, 13)){
 			if(s.charAt(i - 1) == ';' || s.charAt(i - 1) == ' ' || s.charAt(i - 1) == '}')
@@ -96,7 +96,7 @@ class Saida{
 		}
 		return false;	
 	}
-	public void imprimaNumero(double num){
+	public void imprimaNumero(double num){//Recebe só UM n° para ser impresso.
 		System.out.println(num);
 	}
 	

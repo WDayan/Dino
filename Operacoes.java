@@ -35,7 +35,7 @@ class Operacoes{
 		return Double.parseDouble(s);
 	}
 	
-	public int prioridade(char c){
+	public int prioridade(char c){//Para a funcao Calcula, recebe um char, e devolve a prioridade dele.
 		if(c == '(')
 			return 1;
 		else if(c == '+' || c == '-')
@@ -53,7 +53,7 @@ class Operacoes{
 		return nova.toString();	
 	}
 	
-	public double valorLetra(String s, char c){
+	public double valorLetra(String s, char c){ //Controle interno, pra saber o valor de cada coisa num vetor. Tudo só para a função Calcula.
 		int i = - 1;
 		switch(c){
 			case 'a': i = 0; break;

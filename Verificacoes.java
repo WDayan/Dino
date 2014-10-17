@@ -152,7 +152,7 @@ class Verificacoes{
 	}
 	
 	
-	public boolean ehIf(String s, int i){
+	public boolean ehIf(String s, int i){ //Recebe a posicao no I. Devolve TRUE or FALSE
 		if(s.charAt(i) == 'i' && s.charAt(i+1) == 'f' && (s.charAt(i-1) == ' ' || s.charAt(i-1) == ';' || s.charAt(i-1) == '}'))
 			return true;
 		return false;	
