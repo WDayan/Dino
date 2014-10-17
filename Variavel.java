@@ -22,13 +22,14 @@ class Variavel{
 	//}
 	public static boolean ehDouble(String s, int i){
 		String Double = new String("double ");
-		if(Double.regionMatches(0, s, i, 7)) //Função teste se a string DOUBLE  é igual a região que eu defini da string S.
-			return true;
-		else
-			return false;
+		if(Double.regionMatches(0, s, i, 7)){ //Função teste se a string DOUBLE  é igual a região que eu defini da string S.
+			if(s.charAt(i-1) == ' ' || s.charAt(i-1) == ';' || s.charAt(i-1) == '{' || s.charAt(i-1) == '}')
+				return true;
+		}
+		return false;
 	}
 	
-	public static String novaVariavel(String s, int comeco, int ultimo){
+	public static String novaVariavel(String s, int comeco, int ultimo){ //Recebe o começo e o final da variavel, e devolve o nome dela.
 		String aux = new String();
 		while(comeco <= ultimo){
 			if(s.charAt(comeco) == ' ') //Para ignorar espacos.
@@ -42,7 +43,7 @@ class Variavel{
 	
 	}
 	
-	public static int achaNovaVariavel(String s, int comeco){
+	public static int achaNovaVariavel(String s, int comeco){ //Acha a ultima posicao da variavel.
 		int ultimo = comeco;
 		boolean feito = true;//Só existe pra ficar girando no WHILE.
 		char c;
@@ -64,7 +65,7 @@ class Variavel{
 
 	public static int achaVariavel(Variavel v[], String s){
 		int i;
-		for(i = 0; v[i].nome != null; i++){ //COLOQUEI 6 PARA TESTAR!! PRECISO ARRUMAR!!
+		for(i = 0; v[i].nome != null; i++){ 
 			if(v[i].nome.equals(s)){
 				return i;		
 			}
