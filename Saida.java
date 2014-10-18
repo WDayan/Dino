@@ -9,48 +9,25 @@ class Saida{
 		double valor;
 		int indice = 0, tmp;
 		c = s.charAt(i);
-		for(i = i+1; c != ';' && i < s.length(); i++){
-				if(Character.isLetter(c)){
-					for(i = i; c != ')' && c != '+' && i < s.length(); i++){
-						if(c == '"')
-							i = i;
-						else
-							aux += c;
+		for(i += 1; c != ';' && i < s.length(); i++){
+				if(c == '"'){
+					c = s.charAt(i);
+					for(i += 1; c != '"'; i++){
+						aux += c;
 						c = s.charAt(i);
 					}
-					tmp = Variavel.achaVariavel(v, aux);
-					if(tmp == - 1)
-						System.out.print(aux);
-					else
-						System.out.print(v[tmp].getValor());
+					System.out.print(aux);
 					aux = "";
-					if(i == s.length()){
-						System.out.print(" ");
-						return ;
-					}
 				}
 				if(c == '+'){
 					c = s.charAt(i);
 					while(c != ')' && c != '+'){
-						if(c == ' ')
-							i = i;
-						if(c == ')')
-							break;
 						if(Character.isLetter(c)){
-							aux += c;
-							c = s.charAt(i+1);
-							while(Character.isLetter(c)){
-								i++;
-								aux += c;
-								c = s.charAt(i+1);
-							}
-							indice = Variavel.achaVariavel(v, aux);
-							if(indice == - 1)
-								System.out.print(aux);
-							else
-								System.out.print(v[indice].getValor());
+							aux = Verificacoes.achaTodoONome(s, i);
+							//System.out.println("\n\nAqui"+aux);
+							System.out.print(v[Variavel.achaVariavel(v, aux)].getValor());
 							aux = "";
-						
+							i = Verificacoes.giraAteNaoCaracter(s, i) - 1;
 						}
 						i++;
 						c = s.charAt(i);
@@ -81,19 +58,15 @@ class Saida{
 
 	public boolean ehImprima(String s, int i){ //Recebe no 'i'. Devolve TRUE caso: for imprima(); se não FALSE
 		String Imprima = new String("imprima");
-		if(Imprima.regionMatches(0, s, i, 7)){
-		if(s.charAt(i - 1) == ';' || s.charAt(i - 1) == ' ' || s.charAt(i - 1) == '}')
+		if(Imprima.regionMatches(0, s, i, 7))
 			return true;
-		}
 		return false;
 	}
 	
 	public boolean ehImprimaNumero(String s, int i){//Recebe no 'i'. Devolve TRUE caso: for imprimaNumero(); se não FALSE
 		String Imprima = new String("imprimaNumero");
-		if(Imprima.regionMatches(0, s, i, 13)){
-			if(s.charAt(i - 1) == ';' || s.charAt(i - 1) == ' ' || s.charAt(i - 1) == '}')
+		if(Imprima.regionMatches(0, s, i, 13))
 				return true;
-		}
 		return false;	
 	}
 	public void imprimaNumero(double num){//Recebe só UM n° para ser impresso.

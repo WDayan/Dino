@@ -1,7 +1,15 @@
 class Verificacoes{
-	//private int escopo;
 	private double valor1, valor2;
 	private boolean b;
+	private int linhaF;
+	
+	public int getLinha(){
+		return this.linhaF;
+	}
+	
+	public void setLinha(int linha){
+		this.linhaF = linha;
+	}
 	
 	public static int giraAteNaoCaracter(String s, int i){ //Recebe alguma posicao do Caracter
 		char c;
@@ -19,7 +27,7 @@ class Verificacoes{
 		return i - 1;
 	}
 	
-	public static String achaTodoONome(String s, int i){ //Recebe a posicao do 1° Caracter!
+	public static String achaTodoONome(String s, int i){ //Recebe a posicao do 1° Caracter! Devolve o nome encontrado.
 		char c;
 		String nome = new String();
 		c = s.charAt(i);
@@ -31,7 +39,7 @@ class Verificacoes{
 		return nome.toString();	
 	}
 	
-	public static double achaTodoONumero(String s, int i){ //Recebe a 1° posicao do Numero.
+	public static double achaTodoONumero(String s, int i){ //Recebe a 1° posicao do Numero. Devolve o Numero, já em Double.
 		char c;
 		String numero = new String();
 		c = s.charAt(i);
@@ -54,9 +62,10 @@ class Verificacoes{
 	}
 	
 	
-	public int giraAteEscopo(String s, int i){ //Se o IF der FALSE, ele vai girar até sair do escopo. Recebe qualquer posicao dentro do IF!!
+	public int giraAteEscopo(String s, int i, String pg[], int linha){ //Se o IF der FALSE, ele vai girar até sair do escopo. Recebe qualquer posicao dentro do IF!!
 		char c;
 		int escopo = 0;
+		linhaF = linha; //F de final. Que será alterada.
 		while(s.charAt(i) != '{'){//Acha o primeiro escopo.
 			i++;
 		}
@@ -64,18 +73,23 @@ class Verificacoes{
 			return i+1;
 		}
 		else{
-			i++;
-			for(escopo = 1; escopo > 0; i++){//Vai achar o escopo, e devolver a posicao que deve continuar.
-				//System.out.println("char = "+s.charAt(i));
-				c = s.charAt(i);
-				if(c == '{')
-					escopo ++;
-				else if(c == '}')
-					escopo --;
+			for(i += 1, escopo = 1; pg[linhaF] != null; linhaF++){
+				s = pg[linhaF];
+				if(linhaF > linha)
+					i = 0;
+				for(i = i; escopo > 0 && i < s.length(); i++){//Vai achar o escopo, e devolver a posicao que deve continuar.
+					c = s.charAt(i);
+					System.out.println("Char = "+c);
+					if(c == '{')
+						escopo ++;
+					else if(c == '}')
+						escopo --;
+				}
 			}
-			return i;
 		}
+		return i;
 	}
+	
 	
 	public boolean seIf(Variavel v[], String s, int i){//precisa receber a posicao da string no comeco dos (   Faz a comparação e devolve TRUE or FALSE.
 		char c;
@@ -87,7 +101,6 @@ class Verificacoes{
 			if(Character.isLetter(c)){
 				aux = Verificacoes.achaTodoONome(s, i-1);
 				i = Verificacoes.giraAteNaoCaracter(s, i-1);
-				//System.out.println("Variavel "+aux);
 				if(parte == 1)
 					valor1 = v[Variavel.achaVariavel(v, aux)].getValor();
 				else
@@ -106,6 +119,7 @@ class Verificacoes{
 			else if(c == '=' || c == '<' || c == '>' || c == '!'){
 				op = i - 1;
 				parte = 2;
+				i++;
 			}
 			c = s.charAt(i);
 		}
@@ -113,12 +127,13 @@ class Verificacoes{
 		switch(c){
 		case '<':
 			if(s.charAt(op + 1) == '='){
-				if(valor1 <= valor2)
+				if(valor1 <= valor2){
 					b = true;
+				}
 				else
 					b = false;
 			}
-			if(valor1 < valor2)
+			else if(valor1 < valor2)
 				b = true;
 			else
 				b = false;
@@ -130,7 +145,7 @@ class Verificacoes{
 				else
 					b = false;
 			}
-			if(valor1 > valor2)
+			else if(valor1 > valor2)
 				b = true;
 			else
 				b = false;
@@ -153,7 +168,7 @@ class Verificacoes{
 	
 	
 	public boolean ehIf(String s, int i){ //Recebe a posicao no I. Devolve TRUE or FALSE
-		if(s.charAt(i) == 'i' && s.charAt(i+1) == 'f' && (s.charAt(i-1) == ' ' || s.charAt(i-1) == ';' || s.charAt(i-1) == '}'))
+		if(s.charAt(i) == 'i' && s.charAt(i+1) == 'f')
 			return true;
 		return false;	
 	}

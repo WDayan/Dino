@@ -1,11 +1,15 @@
-a 
-a1
-b
-b1
-c
-c1
-
-
-
-
-end; --
+	double abacaxi, b;
+	b = 4;
+	abacaxi = ((4 + 2) / 3) *2;
+	double a;
+	a = 14;
+	if(abacaxi >= b){
+		abacaxi = (4 * 2) - 1;
+		if(a != abacaxi){
+			b = abacaxi * 2;
+		}
+	}
+	
+	imprima("abacaxi = " + abacaxi);
+	imprimaNumero(2);
+	imprima("Teste de B = " +  b);

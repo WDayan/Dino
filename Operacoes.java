@@ -101,16 +101,14 @@ class Operacoes{
 		String aux = new String();
 		c = s.charAt(i);
 		i++;
-		for(posicao = 0; i < s.length() || c != ';'; i++){
+		for(posicao = 0; i < s.length() && c != ';'; i++){
 			if(Character.isLetter(c)){//Se encontrar uma letra,
 				aux += c;
 				i++;
 				c = s.charAt(i-1);
-				//System.out.println("Aux = "+aux+"    Char "+c+"      I == "+i);
 				while(Character.isLetter(c)){//vai varrer até encontrar todo o nome da Variavel.
 					aux += c;
 					i++;
-					//System.out.println("Aux = "+aux+"     char = "+c+"      i = "+i);
 					c = s.charAt(i-1);
 				}
 				result += letras.charAt(indice); //Depois irá colocar um nome temporário, no resultado, deixando tudo como a+b+c-d/e ..... y;

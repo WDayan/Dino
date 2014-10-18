@@ -22,10 +22,8 @@ class Variavel{
 	//}
 	public static boolean ehDouble(String s, int i){//Recebe no 'd'. Devolve TRUE caso: for crianção de variavel. se não FALSE
 		String Double = new String("double ");
-		if(Double.regionMatches(0, s, i, 7)){ //Função teste se a string DOUBLE  é igual a região que eu defini da string S.
-			if(s.charAt(i-1) == ' ' || s.charAt(i-1) == ';' || s.charAt(i-1) == '{' || s.charAt(i-1) == '}')
+		if(Double.regionMatches(0, s, i, 7))//Função teste se a string DOUBLE  é igual a região que eu defini da string S.
 				return true;
-		}
 		return false;
 	}
 	
@@ -72,8 +70,26 @@ class Variavel{
 		}
 		return - 1;
 	}
-
-
+	
+	public static String qualVariavelParaAtribuir(String s, int i){//Recebe a String, e a posicao exata do '='. Irá voltar, e encontrar a variavel antes do '=' !! Devolve o Nome da Variavel.
+		String aux = new String();
+		char c = s.charAt(i);
+		for(i -= 1; Character.isLetter(c) == false; i--){
+			c = s.charAt(i);
+		}
+		for(i = i, c = s.charAt(i + 1); Character.isLetter(c); i--){
+			c = s.charAt(i);
+		}
+		for(i += 3, c = s.charAt(i-1); Character.isLetter(c); i++){
+			aux += c;
+			c = s.charAt(i);
+		}
+		return aux.toString();
+	}
+	
+	public void atribuicao(Variavel v[], String nome, double valor){//Recebe as variaveis, o NOME duma delas, e o valor para colocar.
+		v[Variavel.achaVariavel(v, nome)].setValor(valor);	
+	}
 
 
 
