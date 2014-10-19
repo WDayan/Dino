@@ -187,4 +187,10 @@ class Verificacoes{
 		return false;
 	}
 	
+	public boolean lerScanner(String s, int i){
+	String nomeLer = new String("ler");
+	if (nomeLer.regionMatches(0, s, i, 3) && (s.charAt(i+3) == ' ' || s.charAt(i+3) ==';'))
+		return true;
+	return false;
+	}
 }
