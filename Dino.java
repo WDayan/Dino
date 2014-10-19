@@ -1,8 +1,8 @@
 /*
-	Interpretador de códigos v1.0
-	Use esse programa em Java para interpretar códigos “.dino”. 
-	Está incluído na pasta raiz deste programa um manual de operação (manual operação linguagem dino).
-	Para interpretar um código use: “java Dino arquivo.dino “
+	Interpretador de codigos v1.0
+	Use esse programa em Java para interpretar codigos .dino. 
+	Está incluido na pasta raiz deste programa um manual de operacao (manual operação linguagem dino).
+	Para interpretar um codigo use: java Dino arquivo.dino
 	Desenvolvido por: 
 		Bruno Dall Orsoletta – email br-bruno@hotmail.com
 		Dayan Weber – email 
@@ -14,9 +14,9 @@ class Dino
 {
     public static void main(String args[]) throws Exception
 	{
-	// -------------------- Inicio da leitura do programa ".dino" --------------------
+	// -------------------- Inicio da leitura do programa .dino --------------------
 		File dino;
-		String prg[] = new String[500]; // arquivo pode ter, no máximo, 500 linhas e 500 variaveis.
+		String prg[] = new String[500]; // arquivo pode ter, no maximo, 500 linhas e 500 variaveis.
 		Scanner ler;
 		
 		try 
@@ -35,11 +35,11 @@ class Dino
             System.out.println("Nao consegui ler o arquivo: " + (args.length > 0 ? args[0] : "(desconhecido)"));
             System.out.println("Uso -> java Dino arquivo.dino");
 		}
-	// -------------------- Fim da leitura do programa ".dino" -------------------- 
+	// -------------------- Fim da leitura do programa .dino -------------------- 
 	
 	//O nome da String com o programa eh "prg"
 	
-	// ----------------------- caso de texte, imprimi string .dino
+	// ----------------------- caso de teste, imprimi string .dino
 	// Interpretador x;
 	// x = new Interpretador();
 	// x.interpreta(prg);
@@ -164,14 +164,22 @@ class Dino
 					else
 						countl -= 2;
 				}	
-			
+
 				//Teste no caso Scanner
 				else if (v.lerScanner(s, ultimo)) {
 						Scanner ler2;
 						ler2 = new Scanner(System.in);
 						kScanner = ler2.nextLine();
 				}
+
+				//Teste no caso Scanner
+				else if (v.lerScanner(s, ultimo)) {
+					Scanner ler2;
+					ler2 = new Scanner(System.in);
+					kScanner = ler2.nextLine();
+					vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, v.achaIgual(s, ultimo)), op.fazDouble(kScanner));
+				}
 			}
 		}
 	}
-}   
+}	
