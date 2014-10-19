@@ -1,0 +1,22 @@
+	double i;
+	double j;
+	i = 0;
+	j = i;
+	
+	do {
+		if ( i == 0 ) {
+			imprima("Zero");
+		} if ( i != 0 ) {
+			imprima("Outro");
+			}
+		i = i + 1;
+		} while (i < 3);
+		
+	if ( i == 3 ) {
+		if ( j == 0 ) {
+			imprima("Ok!");
+			} if ( j != 0) {
+				imprima("Erro");
+				}
+	}
+				
