@@ -42,7 +42,7 @@ class Dino
 	
 	for(y = 0; y < 30; y++) //Para criar Variaveis mais rapidamente.
 		vars[y] = new Variavel();
-	for(linha = 0;prg[linha] != null; linha++){
+	for(linha = 0; prg[linha] != null; linha++){
 		s = prg[linha];
 		for(ultimo = 0;ultimo < s.length(); ultimo++){
 			c = s.charAt(ultimo);
@@ -67,7 +67,8 @@ class Dino
 				int entrou = 0;
 				for(c = s.charAt(comeco), comeco += 1; c != ';'; comeco++){
 					if(c == '+' || c == '-' || c == '*' || c == '/'){
-						vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, ultimo-1), op.calcula(s, ultimo, vars));//Aqui no caso de ser a + b -3 / 14 .......
+						double abacate = op.calcula(s, ultimo, vars);
+						vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, ultimo-1), abacate);//Aqui no caso de ser a + b -3 / 14 .......
 						entrou = 1;
 					}
 				//	home++;
@@ -96,13 +97,12 @@ class Dino
 			}
 			//Testa no caso de IF
 			else if(v.ehIf(s, ultimo)){ //Se for um IF. A função descobre se realmente eh IF
-				//System.out.println("Ultimo = "+ultimo+"\nLinha1 = "+linha);
 				ultimo = Saida.giraAtePrimeiroParenteses(s, ultimo); //Vai girar até encontrar o 1° (, e devolver a próxima posicao, ou seja, depois do (
 				if(v.seIf(vars, s, ultimo)) //Vai descobrir se o IF do programa eh TRUE or FALSE
 					ultimo = v.giraAteEscopo(s, ultimo, prg, linha); //Se for TRUE, vai girar até o {
 				else{
 					ultimo = v.giraAteEscopo(s, ultimo, prg, linha) - 1; //Se for FALSE, vai girar até sair desse IF, e dos IF dentro dele.	
-					linha = v.getLinha() - 1;
+					linha = v.getLinha();
 					//System.out.println("Ultimo = "+ultimo+"\nLinha = "+linha);
 				}
 			}
@@ -118,9 +118,7 @@ class Dino
 					ultimo = Saida.giraAtePrimeiroParenteses(s, ultimo);
 					sair.imprima(vars, s, ultimo);
 					ultimo = Saida.giraAteUltimoParenteses(s, ultimo);
-				}
-				
-			
+				}			
 			}
 		
 		}//Colchetes do FOR.

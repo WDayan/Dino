@@ -73,13 +73,13 @@ class Verificacoes{
 			return i+1;
 		}
 		else{
-			for(i += 1, escopo = 1; pg[linhaF] != null; linhaF++){
+			for(i += 1, escopo = 1; pg[linhaF] != null && escopo > 0; linhaF++){
 				s = pg[linhaF];
 				if(linhaF > linha)
 					i = 0;
 				for(i = i; escopo > 0 && i < s.length(); i++){//Vai achar o escopo, e devolver a posicao que deve continuar.
 					c = s.charAt(i);
-					System.out.println("Char = "+c);
+					//System.out.println("Char = "+c);
 					if(c == '{')
 						escopo ++;
 					else if(c == '}')
@@ -168,7 +168,7 @@ class Verificacoes{
 	
 	
 	public boolean ehIf(String s, int i){ //Recebe a posicao no I. Devolve TRUE or FALSE
-		if(s.charAt(i) == 'i' && s.charAt(i+1) == 'f')
+		if(s.charAt(i) == 'i' && s.charAt(i+1) == 'f' && (s.charAt(i+2) == ' ' || s.charAt(i+2) == '('))
 			return true;
 		return false;	
 	}

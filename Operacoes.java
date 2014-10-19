@@ -175,13 +175,7 @@ class Operacoes{
 			if(Character.isLetter(c)){
 				pilha[posicao] = valorLetra(result, c);
 				posicao++;
-				//System.out.println("Pilha = "+pilha[posicao-1]);
 			}
-			//else if(Character.isDigit(c)){
-				//pilha[posicao] = fazDouble(achaDouble(s, i));//Dá a posicao do N° para o achaDouble, este devolve a String que deve ser convertida para Double. REVER <---
-				//pilha[posicao] = Double.parseDouble(Character.toString(c));
-				//posicao++;
-			//}
 			else if(c == '+' || c == '-' || c == '*' || c == '/'){
 					a = pilha[posicao-2];
 					b = pilha[posicao-1];

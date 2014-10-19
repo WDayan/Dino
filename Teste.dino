@@ -1,15 +1,27 @@
-	double abacaxi, b;
-	b = 4;
-	abacaxi = ((4 + 2) / 3) *2;
-	double a;
-	a = 14;
-	if(abacaxi >= b){
-		abacaxi = (4 * 2) - 1;
-		if(a != abacaxi){
-			b = abacaxi * 2;
+double abacaxi, b;
+b = 4;
+abacaxi= 2;
+double a;
+			abacaxi  =    3;
+	
+	abacaxi = (b + 2) * 2;
+
+	
+	if(abacaxi > b){
+		imprima(abacaxi);
+		if(b > 2){
+			imprimaNumero(2);
+		
+			if(a == 0){
+				imprima("Teste de a = " +  a);
+				imprima("Teste de b = " +  b);
+				double macarrao;
+				macarrao = 14 + 3 *2;
+				
+			}
 		}
 	}
+	imprima("Teste de abacaxi com a  = " +  a);
+	imprima("Macarrao  = "     +                         macarrao);
 	
-	imprima("abacaxi = " + abacaxi);
-	imprimaNumero(2);
-	imprima("Teste de B = " +  b);
+	

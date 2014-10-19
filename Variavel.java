@@ -14,12 +14,7 @@ class Variavel{
 	public String getNome(){
 		return this.nome.toString();
 	}
-	//public Variavel getVariavel(){
-	//	return this.variavel;
-	//}
-	//public void setVariavel(Variavel j){
-	//	this.Variavel = j;
-	//}
+
 	public static boolean ehDouble(String s, int i){//Recebe no 'd'. Devolve TRUE caso: for crianção de variavel. se não FALSE
 		String Double = new String("double ");
 		if(Double.regionMatches(0, s, i, 7))//Função teste se a string DOUBLE  é igual a região que eu defini da string S.
@@ -77,10 +72,15 @@ class Variavel{
 		for(i -= 1; Character.isLetter(c) == false; i--){
 			c = s.charAt(i);
 		}
-		for(i = i, c = s.charAt(i + 1); Character.isLetter(c); i--){
+		for(i = i, c = s.charAt(i + 1); Character.isLetter(c) == true; i--){
+			if(i == -1)
+				break;
 			c = s.charAt(i);
 		}
-		for(i += 3, c = s.charAt(i-1); Character.isLetter(c); i++){
+		if(Character.isLetter(c) == false){
+			i++;
+		}
+		for(i += 2, c = s.charAt(i-1); Character.isLetter(c); i++){
 			aux += c;
 			c = s.charAt(i);
 		}

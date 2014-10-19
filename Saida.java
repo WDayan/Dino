@@ -3,8 +3,7 @@ class Saida{
 
 
 	public void imprima(Variavel v[], String s, int i){ //Funcao não faz a verificação se realmente eh um imprima. <-- REVER!!!!!!//Precisa receber no 1° (
-		char c; //O problema aqui, eh que se ele quiser imprimir o NOME da variavel, na verdade irá imprimir o VALOR dela. Por causa dos "" Que não consegui testar ainda
-		//System.out.println(s);
+		char c;
 		String aux = new String();
 		double valor;
 		int indice = 0, tmp;
@@ -19,12 +18,11 @@ class Saida{
 					System.out.print(aux);
 					aux = "";
 				}
-				if(c == '+'){
+				else if(c == '+'){
 					c = s.charAt(i);
 					while(c != ')' && c != '+'){
 						if(Character.isLetter(c)){
 							aux = Verificacoes.achaTodoONome(s, i);
-							//System.out.println("\n\nAqui"+aux);
 							System.out.print(v[Variavel.achaVariavel(v, aux)].getValor());
 							aux = "";
 							i = Verificacoes.giraAteNaoCaracter(s, i) - 1;
@@ -34,6 +32,13 @@ class Saida{
 						if(c == '+')
 							i++;
 					}
+				}
+				else if(Character.isLetter(c)){
+					String azeitona = new String ();
+					azeitona = Verificacoes.achaTodoONome(s, i-1);
+					double laranja = v[Variavel.achaVariavel(v, azeitona)].getValor();
+					System.out.print(laranja);
+					i = Verificacoes.giraAteNaoCaracter(s, i);
 				}
 			c = s.charAt(i);
 		}
