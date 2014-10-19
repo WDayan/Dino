@@ -149,6 +149,7 @@ class Dino
 					Scanner ler2;
 					ler2 = new Scanner(System.in);
 					kScanner = ler2.nextLine();
+					vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, v.achaIgual(s, ultimo)), kScanner);
 			}
 		}
 	}

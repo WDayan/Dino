@@ -79,7 +79,6 @@ class Verificacoes{
 					i = 0;
 				for(i = i; escopo > 0 && i < s.length(); i++){//Vai achar o escopo, e devolver a posicao que deve continuar.
 					c = s.charAt(i);
-					//System.out.println("Char = "+c);
 					if(c == '{')
 						escopo ++;
 					else if(c == '}')
@@ -185,6 +184,15 @@ class Verificacoes{
 		if (nomeWhile.regionMatches(0, s, i, 5) && (s.charAt(i+5) == ' ' || s.charAt (i+5) == '(') )
 			return true;
 		return false;
+	}
+	
+	public int achaIgual(String s, int i){ //Método vai para TRÁZ, até encontrar um =.
+		char c = s.charAt(i);
+		for(i -= 1; c != '='; i--)
+			c = s.charAt(i);
+		return i++;
+	}
+	
 	}
 	
 }
