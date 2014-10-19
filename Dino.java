@@ -123,53 +123,22 @@ class Dino
 				}			
 			}
 			//Teste no caso DO
-			else if (v.ehdo(s, ultimo)) {
-				if (c_laco == 0){
+			else if (v.ehDo(s, ultimo)) {
 				salva_do[0] = linha;
 				salva_do[1] = ultimo+2;
-				c_laco = 2;
-				System.out.println(salva_do[0]);
-				System.out.println(salva_do[1]);
-				System.out.println(c_laco);
 				}
-				else if (c_laco == 2){
-				salva_do[2] = linha;
-				salva_do[3] = ultimo+2;
-				c_laco = 4;
-				System.out.println(salva_do[2]);
-				System.out.println(salva_do[3]);
-				System.out.println(c_laco);
-				}
-				else if (c_laco == 4){
-				salva_do[4] = linha;
-				salva_do[5] = ultimo+2;
-				c_laco = 6;
-				}
-			}
+			
 			//Teste no caso While 	
-			else if (v.ehwhile(s, ultimo)) {
+			else if (v.ehWhile(s, ultimo)) {
 				int k1;
 				k1 = Saida.giraAtePrimeiroParenteses(s, ultimo);
 				if (v.seIf(vars, s, k1)) {
-				System.out.println(salva_do[0]);
-				System.out.println(salva_do[1]);
-				System.out.println(c_laco);
-				System.out.println(salva_do[2]);
-				System.out.println(salva_do[3]);
-				linha = salva_do[0+(c_laco-2)];
-				ultimo = salva_do[1+(c_laco-2)];
+				linha = salva_do[0];
+				ultimo = salva_do[1];
 				}
-				else if (v.ehwhile(s, ultimo) == false)
-				c_laco = -2;
 				
 			}
 		}
 	}
-	//System.out.print("\n\n");
-	//System.out.println("Variavel  "+vars[0].getNome()+" = "+ vars[0].getValor());
-	//System.out.println("Variavel  "+vars[1].getNome()+" = "+ vars[1].getValor());
-	//System.out.println("Variavel  "+vars[2].getNome() +" = "+vars[2].getValor());
-	//System.out.println("Variavel  "+vars[3].getNome() +" = "+vars[3].getValor());
-	
 	}
 }   

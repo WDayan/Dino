@@ -165,31 +165,26 @@ class Verificacoes{
 		}	
 		return b;
 	}
-	
-	
+
 	public boolean ehIf(String s, int i){ //Recebe a posicao no I. Devolve TRUE or FALSE
 		if(s.charAt(i) == 'i' && s.charAt(i+1) == 'f' && (s.charAt(i+2) == ' ' || s.charAt(i+2) == '('))
 			return true;
 		return false;	
 	}
 	
-	public boolean ehdo(String s, int i){
-		if (s.charAt(i) == 'd' && s.charAt (i+1) == 'o' && (s.charAt(i+2) == ' ' || s.charAt(i+2) == '{'))
+	public boolean ehDo(String s, int i){ //verifica se eh um laco (inicio). Devolve TRUE or FALSE
+		String nomeDo = new String("do");
+		if (nomeDo.regionMatches(0, s, i, 2) && (s.charAt(i+2) == ' ' || s.charAt (i+2) == '{') )
+			return true;
+		return false;
+
+	}
+
+	public boolean ehWhile(String s, int i){ //verifica se eh um laco (fim). Devolve TRUE or FALSE
+		String nomeWhile = new String("while");
+		if (nomeWhile.regionMatches(0, s, i, 5) && (s.charAt(i+5) == ' ' || s.charAt (i+5) == '(') )
 			return true;
 		return false;
 	}
-
-	public boolean ehwhile(String s, int i){
-		if (s.charAt(i) == 'w' && s.charAt (i+1) == 'h')
-			if (s.charAt(i+2) == 'i' && s.charAt (i+3) == 'l' && s.charAt(i+4) == 'e')
-				if (s.charAt(i+5) == ' ' || s.charAt (i+5) == '(')
-			return true;
-		return false;
-	}
-
-
-
-
-
-
+	
 }
