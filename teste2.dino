@@ -1,0 +1,11 @@
+	double a,b;
+	a = 0;
+	b = 0;
+	do { 
+	a = a + 1;
+	imprima("a=" +a);
+	do {
+	b = b + 1;
+	imprima("b=" +b);
+	} while (b > 300);
+	} while (a < 5);

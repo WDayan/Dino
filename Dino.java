@@ -31,6 +31,8 @@ class Dino
 	x = new Interpretador();
 	x.interpreta(prg);
 	//--------------------Comçando a executar o programa.-------------------Nome da String s.
+	int salva_do[] = new int[10];
+	int c_laco =0;
 	Variavel[] vars = new Variavel[500];
 	Operacoes op = new Operacoes();
 	Verificacoes v = new Verificacoes();
@@ -120,8 +122,48 @@ class Dino
 					ultimo = Saida.giraAteUltimoParenteses(s, ultimo);
 				}			
 			}
-		
-		}//Colchetes do FOR.
+			//Teste no caso DO
+			else if (v.ehdo(s, ultimo)) {
+				if (c_laco == 0){
+				salva_do[0] = linha;
+				salva_do[1] = ultimo+2;
+				c_laco = 2;
+				System.out.println(salva_do[0]);
+				System.out.println(salva_do[1]);
+				System.out.println(c_laco);
+				}
+				else if (c_laco == 2){
+				salva_do[2] = linha;
+				salva_do[3] = ultimo+2;
+				c_laco = 4;
+				System.out.println(salva_do[2]);
+				System.out.println(salva_do[3]);
+				System.out.println(c_laco);
+				}
+				else if (c_laco == 4){
+				salva_do[4] = linha;
+				salva_do[5] = ultimo+2;
+				c_laco = 6;
+				}
+			}
+			//Teste no caso While 	
+			else if (v.ehwhile(s, ultimo)) {
+				int k1;
+				k1 = Saida.giraAtePrimeiroParenteses(s, ultimo);
+				if (v.seIf(vars, s, k1)) {
+				System.out.println(salva_do[0]);
+				System.out.println(salva_do[1]);
+				System.out.println(c_laco);
+				System.out.println(salva_do[2]);
+				System.out.println(salva_do[3]);
+				linha = salva_do[0+(c_laco-2)];
+				ultimo = salva_do[1+(c_laco-2)];
+				}
+				else if (v.ehwhile(s, ultimo) == false)
+				c_laco = -2;
+				
+			}
+		}
 	}
 	//System.out.print("\n\n");
 	//System.out.println("Variavel  "+vars[0].getNome()+" = "+ vars[0].getValor());

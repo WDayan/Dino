@@ -172,8 +172,20 @@ class Verificacoes{
 			return true;
 		return false;	
 	}
+	
+	public boolean ehdo(String s, int i){
+		if (s.charAt(i) == 'd' && s.charAt (i+1) == 'o' && (s.charAt(i+2) == ' ' || s.charAt(i+2) == '{'))
+			return true;
+		return false;
+	}
 
-
+	public boolean ehwhile(String s, int i){
+		if (s.charAt(i) == 'w' && s.charAt (i+1) == 'h')
+			if (s.charAt(i+2) == 'i' && s.charAt (i+3) == 'l' && s.charAt(i+4) == 'e')
+				if (s.charAt(i+5) == ' ' || s.charAt (i+5) == '(')
+			return true;
+		return false;
+	}
 
 
 
