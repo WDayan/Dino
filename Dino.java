@@ -31,9 +31,12 @@ class Dino
 	x = new Interpretador();
 	x.interpreta(prg);
 	//--------------------Comçando a executar o programa.-------------------Nome da String s.
-	int salva_do[] = new int[10];
-	int c_laco =0;
+	Repeticao Rep;
+	Rep = new Repeticao();
+
+	String kScanner = new String();
 	Variavel[] vars = new Variavel[500];
+	
 	Operacoes op = new Operacoes();
 	Verificacoes v = new Verificacoes();
 	Saida sair = new Saida();
@@ -124,19 +127,28 @@ class Dino
 			}
 			//Teste no caso DO
 			else if (v.ehDo(s, ultimo)) {
-				salva_do[0] = linha;
-				salva_do[1] = ultimo+2;
-				}
+				Rep.whileDo(linha, ultimo);
+			}
 			
 			//Teste no caso While 	
 			else if (v.ehWhile(s, ultimo)) {
 				int k1;
 				k1 = Saida.giraAtePrimeiroParenteses(s, ultimo);
-				if (v.seIf(vars, s, k1)) {
-				linha = salva_do[0];
-				ultimo = salva_do[1];
-				}
-				
+				if (v.seIf(vars, s, k1))
+					Rep.doWhile(s, ultimo);
+			linha = Rep.salva[0];
+			ultimo = Rep.salva[1];
+			}
+			
+			
+			
+			
+			
+			//Teste no caso Scanner
+			else if (v.lerScanner(s, ultimo)) {
+					Scanner ler2;
+					ler2 = new Scanner(System.in);
+					kScanner = ler2.nextLine();
 			}
 		}
 	}
