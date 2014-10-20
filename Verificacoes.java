@@ -43,7 +43,7 @@ class Verificacoes{
 		char c;
 		String numero = new String();
 		c = s.charAt(i);
-		while(Character.isDigit(c)){
+		while(Character.isDigit(c) || c == '.'){
 			numero += c;
 			i++;
 			c = s.charAt(i);
