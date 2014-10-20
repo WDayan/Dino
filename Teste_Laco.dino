@@ -10,7 +10,7 @@
 	b = b + 1;
 	} while(b < 3);
 
-	} while(a <	2);
+	} while(a < 2);
 	
 	imprima("a= " +a);
 	imprima("b= " +b);
