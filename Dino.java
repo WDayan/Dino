@@ -5,7 +5,7 @@
 	Para interpretar um codigo use: java Dino arquivo.dino
 	Desenvolvido por: 
 		Bruno Dall Orsoletta – email br-bruno@hotmail.com
-		Dayan Weber – email 
+		Dayan Weber – email weber.dayan@gmail.com
 */
 import java.util.Scanner;
 import java.io.*;
@@ -60,8 +60,8 @@ class Dino
 		Verificacoes v = new Verificacoes();
 		Saida sair = new Saida();
 		String s = new String();
-		char c;
-		int ultimo, indice = 0,comeco,y, i, linha, home = 0;
+		char c = ' ';
+		int ultimo, indice = 0,comeco,y, i, linha, parou = 2;
 		double tmp;
 	// fim da declaracao das variaveis
 	
@@ -69,7 +69,8 @@ class Dino
 			vars[y] = new Variavel();
 		for(linha = 0; prg[linha] != null; linha++){
 			s = prg[linha];
-			for(ultimo = 0;ultimo < s.length(); ultimo++){
+			parou = 2;
+			for(ultimo = 0; ultimo < s.length() && parou > 1; ultimo++){
 				c = s.charAt(ultimo);
 				//Testa no caso de NOVA VARIAVEL
 				if(Variavel.ehDouble(s, ultimo)){//Vai descobrir se o que encontrou realmente eh uma criação de variavel DOUBLE.
@@ -93,12 +94,15 @@ class Dino
 					for(c = s.charAt(comeco), comeco += 1; c != ';'; comeco++){
 						if(c == '+' || c == '-' || c == '*' || c == '/'){
 							double abacate = op.calcula(s, ultimo, vars);
+							//System.out.println("Abacate = "+abacate);
 							vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, ultimo-1), abacate);//Aqui no caso de ser a + b -3 / 14 .......
 							entrou = 1;
 						}
-					//	home++;
-						//System.out.println(home +"      Comeco = " +comeco);
+					//	System.out.println("char  "+c);
 						c = s.charAt(comeco);
+						//System.out.println("comeco = "+comeco);
+						//System.out.println("char2 = "+c);
+						//System.out.println("linha = "+linha);
 					}
 					if(entrou < 1){ //Entrou serve para saber se existe uma conta, se nao existir eh só atribuir o valor.
 						comeco = ultimo;
@@ -118,17 +122,18 @@ class Dino
 						}
 					}
 					ultimo = comeco - 1;
-					//System.out.println("comeco"+comeco);
 				}
 				//Testa no caso de IF
 				else if(v.ehIf(s, ultimo)){ //Se for um IF. A função descobre se realmente eh IF
+				//System.out.println("Ultimo = "+ultimo +"  Linha = "+linha+ "   char = "+s.charAt(ultimo));
 					ultimo = Saida.giraAtePrimeiroParenteses(s, ultimo); //Vai girar até encontrar o 1° (, e devolver a próxima posicao, ou seja, depois do (
-					if(v.seIf(vars, s, ultimo)) //Vai descobrir se o IF do programa eh TRUE or FALSE
+					if(v.seIf(vars, s, ultimo, 1)) //Vai descobrir se o IF do programa eh TRUE or FALSE
 						ultimo = v.giraAteEscopo(s, ultimo, prg, linha); //Se for TRUE, vai girar até o {
 					else{
-						ultimo = v.giraAteEscopo(s, ultimo, prg, linha) - 1; //Se for FALSE, vai girar até sair desse IF, e dos IF dentro dele.	
-						linha = v.getLinha();
-						//System.out.println("Ultimo = "+ultimo+"\nLinha = "+linha);
+						ultimo = v.giraAteEscopo(s, ultimo, prg, linha); //Se for FALSE, vai girar até sair desse IF, e dos IF dentro dele.	
+						linha = v.getLinha()+1;
+						parou = 0;
+						//System.out.println("            Ultimo = "+ultimo +"        comprimento = "+s.length()+"   Linha = "+linha+ "   char = "+s.charAt(ultimo));
 					}
 				}
 				//Testa no caso de IMPRIMA
@@ -157,9 +162,11 @@ class Dino
 				else if (v.ehWhile(s, ultimo)) {
 					int k1;
 					k1 = Saida.giraAtePrimeiroParenteses(s, ultimo);
-					if (v.seIf(vars, s, k1)) {
+					if (v.seIf(vars, s, k1, 5)) {
 						linha = salva_do[countl-2];
 						ultimo = salva_do[countl-1];
+						char j = s.charAt(ultimo);
+						//System.out.println("char = "+j );
 					}
 					else
 						countl -= 2;
@@ -179,7 +186,12 @@ class Dino
 					kScanner = ler2.nextLine();
 					vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, v.achaIgual(s, ultimo)), op.fazDouble(kScanner));
 				}
+				//System.out.println("char25  "+c);
 			}
+			
+			//if(c == ';')
+				//ultimo = s.length();
+			//System.out.println("char25  "+c);
 		}
 	}
 }	

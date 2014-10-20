@@ -1,6 +1,6 @@
 class Verificacoes{
-	private double valor1, valor2;
-	private boolean b;
+	private double valor1, valor2, tmp1, tmp2;
+	private boolean b, bTmp;
 	private int linhaF;
 	
 	public int getLinha(){
@@ -79,18 +79,30 @@ class Verificacoes{
 					i = 0;
 				for(i = i; escopo > 0 && i < s.length(); i++){//Vai achar o escopo, e devolver a posicao que deve continuar.
 					c = s.charAt(i);
+					//System.out.println("                             c =  "+c);
 					if(c == '{')
 						escopo ++;
 					else if(c == '}')
 						escopo --;
 				}
 			}
+			//System.out.println("i  =  "+i);
 		}
 		return i;
 	}
 	
 	
-	public boolean seIf(Variavel v[], String s, int i){//precisa receber a posicao da string no comeco dos (   Faz a comparação e devolve TRUE or FALSE.
+	public boolean seIf(Variavel v[], String s, int i, int num){//precisa receber a posicao da string no comeco dos (   Faz a comparação e devolve TRUE or FALSE.
+		if(num == 5){
+			tmp1 = valor1;
+			tmp2 = valor2;	
+			bTmp = b;
+		}
+		else{
+			valor1 = tmp1;
+			valor2 = tmp2;
+			b = bTmp;
+		}
 		char c;
 		int op = 1, parte = 1;
 		String aux = new String();

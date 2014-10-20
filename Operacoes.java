@@ -120,7 +120,7 @@ class Operacoes{
 			if(Character.isDigit(c) == true){
 				aux += c;
 				c = s.charAt(i);
-				while(Character.isDigit(c) == true){
+				while(Character.isDigit(c) || c == '.'){
 					aux += c;
 					i++;
 					c = s.charAt(i);
