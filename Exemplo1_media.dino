@@ -1,9 +1,0 @@
-	double resp,x,y,z;
-	x = 7,5;
-	y = 10;
-	z = 8;
-	
-	imprima("um aluno em 3 provas tirou as notas, 7,5, 10, e 8 - calcule sua media");
-	resp = ((x + y + z) / 3);
-	imprima("resposta= " +resp);
-	
