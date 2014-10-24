@@ -11,9 +11,21 @@ class Verificacoes{
 		this.linhaF = linha;
 	}
 	
+	public static double achaNumeroNegativo(String s, int i){ //Recebe logo após o =
+		char c = s.charAt(i);
+		double num = 0;
+		for(i += 1; c != ';'; i++){
+			if(Character.isDigit(c)){
+				num = Verificacoes.achaTodoONumero(s, i-1);
+				break;
+			}
+			c = s.charAt(i);
+		}
+		num = num * -1;
+		return num;
+	}
 	public static int giraAteNaoCaracter(String s, int i){ //Recebe alguma posicao do Caracter
-		char c;
-		c = s.charAt(i);
+		char c = s.charAt(i);
 		for(i = i + 1; Character.isLetter(c); i++)
 			c = s.charAt(i);
 		return i - 1;
@@ -22,7 +34,7 @@ class Verificacoes{
 	public static int giraAteNaoNumero(String s, int i){//Recebe alguma posicao do Numero.
 		char c;
 		c = s.charAt(i);
-		for(i = i + 1; Character.isDigit(c); i++)
+		for(i = i + 1; Character.isDigit(c) || c == '.'; i++)
 			c = s.charAt(i);
 		return i - 1;
 	}
@@ -79,30 +91,18 @@ class Verificacoes{
 					i = 0;
 				for(i = i; escopo > 0 && i < s.length(); i++){//Vai achar o escopo, e devolver a posicao que deve continuar.
 					c = s.charAt(i);
-					//System.out.println("                             c =  "+c);
 					if(c == '{')
 						escopo ++;
 					else if(c == '}')
 						escopo --;
 				}
 			}
-			//System.out.println("i  =  "+i);
 		}
 		return i;
 	}
 	
 	
 	public boolean seIf(Variavel v[], String s, int i, int num){//precisa receber a posicao da string no comeco dos (   Faz a comparação e devolve TRUE or FALSE.
-		if(num == 5){
-			tmp1 = valor1;
-			tmp2 = valor2;	
-			bTmp = b;
-		}
-		else{
-			valor1 = tmp1;
-			valor2 = tmp2;
-			b = bTmp;
-		}
 		char c;
 		int op = 1, parte = 1;
 		String aux = new String();
@@ -128,9 +128,10 @@ class Verificacoes{
 				aux = "";
 			}
 			else if(c == '=' || c == '<' || c == '>' || c == '!'){
+				if(s.charAt(i) == '=')
+					i++;
 				op = i - 1;
 				parte = 2;
-				i++;
 			}
 			c = s.charAt(i);
 		}
@@ -139,39 +140,74 @@ class Verificacoes{
 		case '<':
 			if(s.charAt(op + 1) == '='){
 				if(valor1 <= valor2){
+					if(num == 5)
+						return true;
 					b = true;
 				}
-				else
+				else{
+					if(num == 5)
+						return false;
 					b = false;
+				}
 			}
-			else if(valor1 < valor2)
+			else if(valor1 < valor2){
+				if(num == 5)
+					return true;
 				b = true;
-			else
+			}
+			else{
+				if(num == 5)
+					return false;
 				b = false;
+			}
 			break;
 		case '>':
 			if(s.charAt(op + 1) == '='){
-				if(valor1 >= valor2)
+				if(valor1 >= valor2){
+					if(num == 5)
+						return true;
 					b = true;
-				else
+				}
+				else{
+					if(num == 5)
+						return false;
 					b = false;
+				}
 			}
-			else if(valor1 > valor2)
+			else if(valor1 > valor2){
+				if(num == 5)
+					return true;
 				b = true;
-			else
+			}
+			else{
+				if(num == 5)
+					return false;
 				b = false;
+			}
 			break;
 		case '=':
-			if(valor1 == valor2)
+			if(valor1 == valor2){
+				if(num == 5)
+					return true;
 				b = true;
-			else
+			}
+			else{
+				if(num == 5)
+					return false;
 				b = false;
+			}
 			break;
 		case '!':
-			if(valor1 != valor2)
+			if(valor1 != valor2){
+				if(num == 5)
+					return true;
 				b = true;
-			else
+			}
+			else{
+				if(num == 5)
+					return false;
 				b = false;
+			}
 			break;	
 		}	
 		return b;

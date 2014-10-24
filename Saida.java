@@ -20,7 +20,7 @@ class Saida{
 				}
 				else if(c == '+'){
 					c = s.charAt(i);
-					while(c != ')' && c != '+'){
+					while(c != ')' && c != '+' && c != '"'){
 						if(Character.isLetter(c)){
 							aux = Verificacoes.achaTodoONome(s, i);
 							System.out.print(v[Variavel.achaVariavel(v, aux)].getValor());
@@ -34,10 +34,7 @@ class Saida{
 					}
 				}
 				else if(Character.isLetter(c)){
-					String azeitona = new String ();
-					azeitona = Verificacoes.achaTodoONome(s, i-1);
-					double laranja = v[Variavel.achaVariavel(v, azeitona)].getValor();
-					System.out.print(laranja);
+					System.out.print(v[Variavel.achaVariavel(v, Verificacoes.achaTodoONome(s, i-1))].getValor());
 					i = Verificacoes.giraAteNaoCaracter(s, i);
 				}
 			c = s.charAt(i);

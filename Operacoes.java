@@ -103,36 +103,25 @@ class Operacoes{
 		i++;
 		for(posicao = 0; i < s.length() && c != ';'; i++){
 			if(Character.isLetter(c)){//Se encontrar uma letra,
-				aux += c;
-				i++;
-				c = s.charAt(i-1);
-				while(Character.isLetter(c)){//vai varrer até encontrar todo o nome da Variavel.
-					aux += c;
-					i++;
-					c = s.charAt(i-1);
-				}
+				aux = Verificacoes.achaTodoONome(s, i-1);
 				result += letras.charAt(indice); //Depois irá colocar um nome temporário, no resultado, deixando tudo como a+b+c-d/e ..... y;
 				valores[indice] = v[Variavel.achaVariavel(v, aux)].getValor(); //Vai pegar o valor dessa variável e guardá-lo tbm!
 				indice++;
-				c = s.charAt(i-1);
+				i = Verificacoes.giraAteNaoCaracter(s, i-1);
+				//c = s.charAt(i-1);
+				//System.out.println("Char   "+c+"\nAux      "+aux);
 				aux = "";
 			}
-			if(Character.isDigit(c) == true){
-				aux += c;
-				c = s.charAt(i);
-				while(Character.isDigit(c) || c == '.'){
-					aux += c;
-					i++;
-					c = s.charAt(i);
-				}
+			else if(Character.isDigit(c)){ //Se encontrar um Numero.
+				aux += Verificacoes.achaTodoONumero(s, i-1);
 				result += letras.charAt(indice);
 				valores[indice] = fazDouble(aux);
 				indice++;
-				c = s.charAt(i);
+				i = Verificacoes.giraAteNaoNumero(s, i-1);
+				//c = s.charAt(i);
+				//System.out.println("CharD   "+c+"\nAuxD    "+aux);
 				aux = "";
 			}
-			else if(c == ' ')
-				i = i;
 			else if(c == '*' || c == '/' || c == '+' || c == '-'){
 				if(posicao > 0 && (prioridade(pilhaInfixa.charAt(posicao-1)) >= prioridade(c))){
 						result += pilhaInfixa.charAt(posicao-1);
@@ -156,9 +145,8 @@ class Operacoes{
 				pilhaInfixa = deletaChar(pilhaInfixa, posicao-1);
 				posicao--;
 			}
-		if(i < s.length()){
+		if(i < s.length())
 			c = s.charAt(i);
-			}
 		}
 		
 		while(posicao > 0){
