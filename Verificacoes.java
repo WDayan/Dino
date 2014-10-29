@@ -128,9 +128,9 @@ class Verificacoes{
 				aux = "";
 			}
 			else if(c == '=' || c == '<' || c == '>' || c == '!'){
+				op = i - 1;
 				if(s.charAt(i) == '=')
 					i++;
-				op = i - 1;
 				parte = 2;
 			}
 			c = s.charAt(i);
