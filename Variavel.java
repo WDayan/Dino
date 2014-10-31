@@ -87,8 +87,8 @@ class Variavel{
 		return aux.toString();
 	}
 	
-	public void atribuicao(Variavel v[], String nome, double valor){//Recebe as variaveis, o NOME duma delas, e o valor para colocar.
-		v[Variavel.achaVariavel(v, nome)].setValor(valor);	
+	public void atribuicao(double v){//Recebe as variaveis, o NOME duma delas, e o valor para colocar.
+		this.valor = v;
 	}
 
 
