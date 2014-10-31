@@ -117,7 +117,7 @@ class Dino
 							vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, ultimo-1), op.calcula(s, ultimo, vars));//Aqui no caso de ser a + b -3 / 14 .......
 							entrou = 1;
 					}
-					else if(temNegativo > 0 && num > 0){
+					else if(temNegativo == 1 && num > 0){
 						vars[0].atribuicao(vars, Variavel.qualVariavelParaAtribuir(s, ultimo-1), Verificacoes.achaNumeroNegativo(s, ultimo));
 						entrou = 1;
 					}

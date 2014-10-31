@@ -14,7 +14,9 @@ class Operacoes{
 	public double divide(){
 		return a / b;
 	}
-	
+	public double resto(){
+		return a % b;
+	}
 	
 	public String achaDouble(String s, int posicao){//Venha a String inteira, e a posicao do começo do numero.
 		String result = new String();
@@ -40,8 +42,10 @@ class Operacoes{
 			return 1;
 		else if(c == '+' || c == '-')
 			return 2;
-		else if(c == '*' || c == '/') //O Outro caso quando eh * ou /
+		else if(c == '*' || c == '/') 
 			return 3;
+		else if(c == '%') // quando tiver um resto
+			return 4;
 		return 0;
 	}
 	
@@ -108,8 +112,6 @@ class Operacoes{
 				valores[indice] = v[Variavel.achaVariavel(v, aux)].getValor(); //Vai pegar o valor dessa variável e guardá-lo tbm!
 				indice++;
 				i = Verificacoes.giraAteNaoCaracter(s, i-1);
-				//c = s.charAt(i-1);
-				//System.out.println("Char   "+c+"\nAux      "+aux);
 				aux = "";
 			}
 			else if(Character.isDigit(c)){ //Se encontrar um Numero.
@@ -118,11 +120,9 @@ class Operacoes{
 				valores[indice] = fazDouble(aux);
 				indice++;
 				i = Verificacoes.giraAteNaoNumero(s, i-1);
-				//c = s.charAt(i);
-				//System.out.println("CharD   "+c+"\nAuxD    "+aux);
 				aux = "";
 			}
-			else if(c == '*' || c == '/' || c == '+' || c == '-'){
+			else if(c == '*' || c == '/' || c == '+' || c == '-' || c == '%'){
 				if(posicao > 0 && (prioridade(pilhaInfixa.charAt(posicao-1)) >= prioridade(c))){
 						result += pilhaInfixa.charAt(posicao-1);
 						pilhaInfixa = deletaChar(pilhaInfixa, posicao-1);
@@ -164,7 +164,7 @@ class Operacoes{
 				pilha[posicao] = valorLetra(result, c);
 				posicao++;
 			}
-			else if(c == '+' || c == '-' || c == '*' || c == '/'){
+			else if(c == '+' || c == '-' || c == '*' || c == '/' || c == '%'){
 					a = pilha[posicao-2];
 					b = pilha[posicao-1];
 					posicao -= 2;
@@ -183,6 +183,10 @@ class Operacoes{
 							break;
 						case '/':
 							pilha[posicao] = divide();
+							posicao++;
+							break;
+						case '%':
+							pilha[posicao] = resto();
 							posicao++;
 							break;
 					}
