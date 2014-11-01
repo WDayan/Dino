@@ -117,8 +117,13 @@ class Dino
 							vars[Variavel.achaVariavel(vars, Variavel.qualVariavelParaAtribuir(s, ultimo-1))].atribuicao(op.calcula(s, ultimo, vars));//Aqui no caso de ser a + b -3 / 14 .......
 							entrou = 1;
 					}
-					else if(temNegativo == 1 && num > 0){
+					else if(temNegativo == 1 && num > 0 ){
 						vars[Variavel.achaVariavel(vars, (Variavel.qualVariavelParaAtribuir(s, ultimo-1)))].atribuicao(Verificacoes.achaNumeroNegativo(s, ultimo));
+						entrou = 1;
+					}
+					else if(temNegativo == 1 && num == 0){
+						double nada =  vars[Variavel.achaVariavel(vars, Verificacoes.achaTodoONome(s, Verificacoes.giraAteCaracter(s, ultimo-1)))].getValor();
+						vars[Variavel.achaVariavel(vars, Variavel.qualVariavelParaAtribuir(s, ultimo-1))].setValor(nada * -1);
 						entrou = 1;
 					}
 					if(entrou < 1){ //Entrou serve para saber se existe uma conta, se nao existir eh só atribuir o valor.

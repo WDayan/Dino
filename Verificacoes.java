@@ -24,6 +24,14 @@ class Verificacoes{
 		num = num * -1;
 		return num;
 	}
+	
+	public static int giraAteCaracter(String s, int i){ //Recebe alguma posicao, gira até encontrar um Caracter.
+		char c = s.charAt(i);
+		for(i = i + 1; Character.isLetter(c) == false; i++)
+			c = s.charAt(i);
+		return i - 1;	
+	}
+	
 	public static int giraAteNaoCaracter(String s, int i){ //Recebe alguma posicao do Caracter
 		char c = s.charAt(i);
 		for(i = i + 1; Character.isLetter(c); i++)
