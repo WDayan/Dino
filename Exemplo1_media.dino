@@ -1,8 +1,8 @@
 	double resp,x,y;
-	x = 7,5;
+	x = 7.3;
 	y = 10;
 	
-	imprima("um aluno em 3 provas tirou as notas, 9 e 10 - calcule sua media");
-	resp = ((x + y) / 3);
+	imprima("Um aluno em 3 provas tirou as notas, 9 , 10 e 7.3 - calcule sua media");
+	resp = ((x + y + 9) / 3);
 	imprima("resposta= " +resp);
 	
