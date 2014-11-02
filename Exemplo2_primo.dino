@@ -1,0 +1,30 @@
+double a,b,c,primo;
+a = ler;
+b = 2;
+do {
+c = a % b;
+if (c == 0){
+primo = 1;
+}
+b = b +1;
+} while (b < a);
+
+if (a <= 0){
+imprima("numero invalido");
+return;
+}
+if (a == 1){
+imprima("o numero nao eh primo");
+return;
+}
+if (a <= 2){
+imprima("o numero eh primo");
+return;
+}
+
+if (primo == 0) {
+imprima("o numero eh primo");
+}
+if (primo != 0) {
+imprima("o numero nao eh primo");
+}
