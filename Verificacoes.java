@@ -240,6 +240,13 @@ class Verificacoes{
 		if (nomeWhile.regionMatches(0, s, i, 5) && (s.charAt(i+5) == ' ' || s.charAt (i+5) == '(') )
 			return true;
 		return false;
+	}	
+	
+	public boolean ehReturn(String s, int i){ //verifica se eh um fim programa. Devolve TRUE or FALSE
+		String nomeWhile = new String("return");
+		if (nomeWhile.regionMatches(0, s, i, 6) && (s.charAt(i+6) == ' ' || s.charAt (i+6) == ';') )
+			return true;
+		return false;
 	}
 	
 	public boolean lerScanner(String s, int i){

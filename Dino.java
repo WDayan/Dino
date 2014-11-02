@@ -51,7 +51,6 @@ class Dino
 
 	
 	// inicio da declaracao das variaveis	
-	
 		String kScanner = new String();
 		Variavel[] vars = new Variavel[500];
 		int salva_do[] = new int[10];
@@ -186,8 +185,13 @@ class Dino
 						char j = s.charAt(ultimo);
 						//System.out.println("char = "+j );
 					}
-					else
-						countl -= 2;
+					else {
+					parou = 0;
+					countl -= 2;
+					}
+				}
+				else if (v.ehReturn(s, ultimo)) {
+				return;
 				}
 			}
 		}
