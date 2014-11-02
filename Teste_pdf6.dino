@@ -6,17 +6,19 @@
 	do {
 		if ( i == 0 ) {
 			imprima("Zero");
-		} if ( i != 0 ) {
+		} 
+		if ( i != 0 ) {
 			imprima("Outro");
-			}
+		}
 		i = i + 1;
-		} while (i < 3);
+		}while (i < 3);
 		
 	if ( i == 3 ) {
 		if ( j == 0 ) {
 			imprima("Ok!");
-			} if ( j != 0) {
-				imprima("Erro");
-				}
+		} 
+		if ( j != 0) {
+			imprima("Erro");
+		}
 	}
 				
