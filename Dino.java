@@ -172,7 +172,7 @@ class Dino
 				//Teste no caso DO - faz o controle da quantidade de lacos.
 				else if (v.ehDo(s, ultimo)) {
 					salva_do[0+countl] = linha;
-					salva_do[1+countl] = ultimo+2;
+					salva_do[1+countl] = ultimo+4;
 					countl += 2;
 				}
 				//Teste no caso While - faz o controle do laco e determina o fim.
