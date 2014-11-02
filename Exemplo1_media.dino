@@ -1,8 +1,8 @@
-	double resp,x,y;
-	x = 7,5;
-	y = 10;
-	
-	imprima("um aluno em 3 provas tirou as notas, 9 e 10 - calcule sua media");
-	resp = ((x + y) / 3);
-	imprima("resposta= " +resp);
-	
+double a,b,tmp;
+imprima("Entre com a primeira nota");
+a = ler;
+imprima("Entre com a segunda nota");
+b = ler;
+tmp = (a + b) / 2;
+imprima("a media ((a+b)/2) eh: ");
+imprima(tmp);
