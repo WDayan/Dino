@@ -1,4 +1,5 @@
 double a,b,c,primo;
+imprima("entre com um numero, maior que 0");
 a = ler;
 b = 2;
 do {
