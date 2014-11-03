@@ -182,8 +182,7 @@ class Dino
 					if (v.seIf(vars, s, k1, 5)) {
 						linha = salva_do[countl-2];
 						ultimo = salva_do[countl-1];
-						char j = s.charAt(ultimo);
-						//System.out.println("char = "+j );
+						s = prg[linha];
 					}
 					else {
 					parou = 0;
