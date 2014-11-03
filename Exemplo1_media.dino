@@ -1,8 +1,9 @@
-double a,b,tmp;
-imprima("Entre com a primeira nota");
-a = ler;
-imprima("Entre com a segunda nota");
-b = ler;
-tmp = (a + b) / 2;
-imprima("a media ((a+b)/2) eh: ");
-imprima(tmp);
+	
+	double a,b,tmp;
+	imprima("Entre com a primeira nota");
+	a = ler;
+	imprima("Entre com a segunda nota");
+	b = ler;
+	tmp = (a + b) / 2;
+	imprima("a media ((a+b)/2) eh: ");
+	imprima(tmp);

@@ -1,31 +1,31 @@
 double a,b,c,primo;
-imprima("entre com um numero, maior que 0");
+imprima("Entre com um numero, maior que 0");
 a = ler;
 b = 2;
 do {
-c = a % b;
-if (c == 0){
-primo = 1;
-}
-b = b +1;
+	c = a % b;
+	if (c == 0){
+		primo = 1;
+	}
+	b = b +1;
 } while (b < a);
 
 if (a <= 0){
-imprima("numero invalido");
-return;
+	imprima("Numero invalido");
+	return;
 }
 if (a == 1){
-imprima("o numero nao eh primo");
-return;
+	imprima("O numero nao eh primo");
+	return;
 }
 if (a <= 2){
-imprima("o numero eh primo");
-return;
+	imprima("O numero eh primo");
+	return;
 }
 
 if (primo == 0) {
-imprima("o numero eh primo");
+	imprima("O numero eh primo");
 }
 if (primo != 0) {
-imprima("o numero nao eh primo");
+	imprima("O numero nao eh primo");
 }
